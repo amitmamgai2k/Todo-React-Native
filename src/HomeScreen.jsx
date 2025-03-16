@@ -4,62 +4,42 @@ import AllItems from './AllItems'
 import Create from './Create';
 import LowStock from './LowStock';
 
-const data = [
-    {
-        id: 1,
-        coin: 'Bitcoin',
-        stock: 75
-    },
-    {
-        id: 2,
-        coin: 'Ethereum',
-        stock: 20
-    },
-    {
-        id: 3,
-        coin: 'Ripple',
-        stock: 95
-    },
-    {
-        id: 4,
-        coin: 'Litecoin',
-        stock: 40
-    },
-    {
-        id: 5,
-        coin: 'Cardano',
-        stock: 10
-    },
-    {
-        id: 6,
-        coin: 'Polkadot',
-        stock: 60
-    },
-    {
-        id: 7,
-        coin: 'Dogecoin',
-        stock: 30
-    },
-    {
-        id: 8,
-        coin: 'Solana',
-        stock: 100
-    },
-    {
-        id: 9,
-        coin: 'Avalanche',
-        stock: 50
-    },
-    {
-        id: 10,
-        coin: 'Chainlink',
-        stock: 80
-    },
-];
+
+
 
 const HomeScreen = () => {
     const [view, setview] = useState(0)
+    const [data, setdata] = useState([
+        {
+            id: 1,
+            coin: 'Bitcoin',
+            stock: 75
+        },
+        {
+            id: 2,
+            coin: 'Ethereum',
+            stock: 20
+        },
+        {
+            id: 3,
+            coin: 'Ripple',
+            stock: 95
+        },
+        {
+            id: 4,
+            coin: 'Litecoin',
+            stock: 40
+        },
+        {
+            id: 5,
+            coin: 'Cardano',
+            stock: 10
+        }
+    ]
+
+    )
   return (
+
     <View style={styles.container}>
         <Text style={styles.title}>Stock Dashboard</Text>
         <View style = {styles.buttonContainer}>
@@ -81,10 +61,11 @@ const HomeScreen = () => {
             view===1 && <LowStock data={data.filter((item)=>item.stock<40)} />
         }
         {
-            view===2 && <Create  data={data}/>
+            view===2 && <Create  data={data} setdata={setdata}/>
         }
 
     </View>
+
   )
 }
 
@@ -95,12 +76,14 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: '#fff',
-        padding:'4%'
+        padding:'4%',
+
     },
     title:{
         fontSize: 24,
         fontWeight: 'bold',
         color: '#333',
+        marginTop: '5%',
     },
     buttonContainer:{
         marginTop: '5%',
